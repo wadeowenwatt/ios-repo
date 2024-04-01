@@ -9,70 +9,49 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet var cardView: UIView!
+    @IBOutlet var signInView: UIView!
+    @IBOutlet var heightConstraint: NSLayoutConstraint!
+    @IBOutlet var topConstraint: NSLayoutConstraint!
     
-    @IBOutlet var centerContent: UIView!
-    @IBOutlet var bigCircleView: UIView!
-    @IBOutlet var blurBigCircle: UIView!
-    @IBOutlet var heightConstraintBlur: NSLayoutConstraint!
+    @IBOutlet var labelSignIn: UILabel!
     
-    @IBOutlet var smallCircleView: UIView!
-    @IBOutlet var smallCircle: UIView!
-    @IBOutlet var blurSmallCircle: UIView!
-    @IBOutlet var heightSmallConstraintBlur: NSLayoutConstraint!
+    @IBOutlet var formView: UIView!
+    @IBOutlet var labelEmail: UILabel!
+    @IBOutlet var labelPassword: UILabel!
+    @IBOutlet var signInBtn: UIButton!
+    var isHiddingUI = true
     
-    @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var ultimateBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let heightViewCard = cardView.frame.size.height
-        let widthViewCard = cardView.frame.size.width
+        // Setup tapGestureRecognizer
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        signInView.addGestureRecognizer(tapGestureRecognizer)
         
-        // Get date
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE, MMM dd yyyy"
-        dateLabel.text = dateFormatter.string(from: date)
+        // Draw signInView
+        signInView.layer.cornerRadius = 5
+        labelSignIn.textColor = .red
         
-        // Get location
-        /// TODO:
-        
-        // build UI for big blur circle
-        heightConstraintBlur.constant = centerContent.frame.size.height / 2
-        addEffectForView(view: blurBigCircle, intensity: CGFloat(0.6))
-        bigCircleView.layer.cornerRadius = CGFloat(bigCircleView.frame.size.width / 2)
-        
-        // build UI for small blur circle
-        smallCircleView.backgroundColor = .clear
-        heightSmallConstraintBlur.constant = smallCircleView.frame.size.height / 2
-        addEffectForView(view: blurSmallCircle, intensity: CGFloat(0.15))
-        smallCircle.layer.cornerRadius = CGFloat(smallCircle.frame.size.width / 2)
-        
-        ultimateBtn.layer.cornerRadius = 8
-        
-        
-        // build UI for cardview
-        cardView.layer.cornerRadius = 10
-//        let testView = BlurCircleView()
-//        self.addChild(testView)
-//        view.addSubview(testView.view)
-//        testView.view.frame = CGRect(x:0, y:0, width: 400, height: 400)
+        // Draw form view
+        labelEmail.textColor = .systemPink
+        labelPassword.textColor = .systemPink
+        signInBtn.layer.cornerRadius = 8
     }
-    
-    func addEffectForView(view: UIView, intensity: CGFloat) {
-        if !UIAccessibility.isReduceTransparencyEnabled {
-            view.backgroundColor = .clear
-            
-            let blurEffect = UIBlurEffect(style: .light)
-
-            let blurEffectView = CustomIntensityVisualEffectView(effect: blurEffect, intensity: intensity)
-            blurEffectView.frame = view.bounds
-            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            
-            
-            view.addSubview(blurEffectView)
+ 
+    @objc func viewTapped() {
+        isHiddingUI = !isHiddingUI
+        if (isHiddingUI) {
+            UIView.animate(withDuration: 3.0) {
+                self.heightConstraint.constant = 80
+                self.topConstraint.constant = 310
+                self.formView.isHidden = self.isHiddingUI
+            }
         } else {
-            view.backgroundColor = .white
+            UIView.animate(withDuration: 3.0) {
+                self.heightConstraint.constant = 60
+                self.topConstraint.constant = 220
+                self.formView.isHidden = self.isHiddingUI
+            }
         }
     }
+    
 }
