@@ -31,7 +31,11 @@ class ViewController: UIViewController {
         // Get date
         let date = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE, MMM d, yyyy"
+        dateFormatter.dateFormat = "EEE, MMM dd yyyy"
+        dateLabel.text = dateFormatter.string(from: date)
+        
+        // Get location
+        /// TODO:
         
         // build UI for big blur circle
         heightConstraintBlur.constant = centerContent.frame.size.height / 2

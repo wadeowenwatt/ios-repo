@@ -109,17 +109,16 @@
 		502C9B542BB0295000F8BC3A /* study-ios */ = {
 			isa = PBXGroup;
 			children = (
-				50C97A132BB93F8C007780E2 /* assets */,
 				50C97A0E2BB86711007780E2 /* custom-view */,
 				50ACC9712BB6D0AE00B9A2D4 /* MyCustomView */,
 				502C9B552BB0295000F8BC3A /* AppDelegate.swift */,
 				502C9B572BB0295000F8BC3A /* SceneDelegate.swift */,
 				502C9B592BB0295000F8BC3A /* ViewController.swift */,
+				50ACC96F2BB6BE8300B9A2D4 /* CustomIntensityVisualEffectView.swift */,
 				502C9B5B2BB0295000F8BC3A /* Main.storyboard */,
 				502C9B5E2BB0295000F8BC3A /* Assets.xcassets */,
 				502C9B602BB0295000F8BC3A /* LaunchScreen.storyboard */,
 				502C9B632BB0295000F8BC3A /* Info.plist */,
-				50ACC96F2BB6BE8300B9A2D4 /* CustomIntensityVisualEffectView.swift */,
 			);
 			path = "study-ios";
 			sourceTree = "<group>";
@@ -158,13 +157,6 @@
 			);
 			name = "custom-view";
 			path = "Cỉl";
-			sourceTree = "<group>";
-		};
-		50C97A132BB93F8C007780E2 /* assets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
