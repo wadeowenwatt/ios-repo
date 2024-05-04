@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// Extension uses for swipe pageView action. Change data source.
 extension PageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = orderedViewControllers.firstIndex(of: viewController) else {
@@ -37,6 +37,7 @@ extension PageViewController: UIPageViewControllerDataSource {
 
 }
 
+// Use for delegate pageViewController to pageControl
 extension PageViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         
@@ -52,6 +53,7 @@ extension PageViewController: UIPageViewControllerDelegate {
     }
 }
 
+// Use for control next button in each page
 extension UIPageViewController {
     func goToNextPage(animated: Bool = true, completion: ((Bool) -> Void)? = nil, pageControl: UIPageControl, currentIndex: Int) {
         if let currentViewController = viewControllers?[0] {
