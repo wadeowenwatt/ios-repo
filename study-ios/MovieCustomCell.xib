@@ -21,13 +21,13 @@
                         <rect key="frame" x="15" y="25" width="354" height="175"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P1P-D6-HlK">
-                                <rect key="frame" x="8" y="-20" width="80" height="187"/>
+                                <rect key="frame" x="8" y="-20" width="90" height="187"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="BN4-XB-PuB"/>
+                                    <constraint firstAttribute="width" constant="90" id="BN4-XB-PuB"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KCH-fs-4SD">
-                                <rect key="frame" x="103" y="20.000000000000004" width="40" height="40.333333333333343"/>
+                                <rect key="frame" x="113" y="20.000000000000004" width="40" height="40.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftn-Fd-Z3b">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="18"/>

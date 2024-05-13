@@ -16,6 +16,7 @@
 		502C9B6D2BB0295100F8BC3A /* study_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C9B6C2BB0295100F8BC3A /* study_iosTests.swift */; };
 		502C9B772BB0295100F8BC3A /* study_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C9B762BB0295100F8BC3A /* study_iosUITests.swift */; };
 		502C9B792BB0295100F8BC3A /* study_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502C9B782BB0295100F8BC3A /* study_iosUITestsLaunchTests.swift */; };
+		504B3F282BF123360018B36F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504B3F262BF123360018B36F /* DetailViewController.swift */; };
 		50F70AEF2BE6132A006DCC75 /* MovieCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F70AED2BE6132A006DCC75 /* MovieCustomCell.swift */; };
 		50F70AF02BE6132A006DCC75 /* MovieCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50F70AEE2BE6132A006DCC75 /* MovieCustomCell.xib */; };
 		50F70AF22BE637AF006DCC75 /* HomeHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F70AF12BE637AF006DCC75 /* HomeHeaderTableView.swift */; };
@@ -53,6 +54,7 @@
 		502C9B722BB0295100F8BC3A /* study-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "study-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		502C9B762BB0295100F8BC3A /* study_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = study_iosUITests.swift; sourceTree = "<group>"; };
 		502C9B782BB0295100F8BC3A /* study_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = study_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		504B3F262BF123360018B36F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		50F70AED2BE6132A006DCC75 /* MovieCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCustomCell.swift; sourceTree = "<group>"; };
 		50F70AEE2BE6132A006DCC75 /* MovieCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCustomCell.xib; sourceTree = "<group>"; };
 		50F70AF12BE637AF006DCC75 /* HomeHeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderTableView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				50F70AED2BE6132A006DCC75 /* MovieCustomCell.swift */,
 				50F70AEE2BE6132A006DCC75 /* MovieCustomCell.xib */,
 				50F70AF12BE637AF006DCC75 /* HomeHeaderTableView.swift */,
+				504B3F262BF123360018B36F /* DetailViewController.swift */,
 			);
 			path = "study-ios";
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				502C9B582BB0295000F8BC3A /* SceneDelegate.swift in Sources */,
 				50F70AF52BE6528B006DCC75 /* UIViewExtensions.swift in Sources */,
 				50F70AEF2BE6132A006DCC75 /* MovieCustomCell.swift in Sources */,
+				504B3F282BF123360018B36F /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

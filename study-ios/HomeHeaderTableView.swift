@@ -14,21 +14,31 @@ class HomeHeaderTableView: UITableViewHeaderFooterView {
     private let titleLabel: UILabel = {
         let titleLable = UILabel()
         titleLable.text = "Movies"
-        titleLable.font = .systemFont(ofSize: 30, weight: .bold)
+        titleLable.font = .systemFont(ofSize: 25, weight: .bold)
         titleLable.textColor = .white
         titleLable.textAlignment = .center
         return titleLable
     }()
     
+    private let hamburgerButton: UIButton = {
+        let hamburgerButton = UIButton()
+        hamburgerButton.tintColor = .white
+        hamburgerButton.setImage(UIImage(systemName: "line.horizontal.3"), for: .normal)
+        return hamburgerButton
+    }()
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         contentView.addSubview(titleLabel)
+        contentView.addSubview(hamburgerButton)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         titleLabel.sizeToFit()
-        titleLabel.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        titleLabel.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+        hamburgerButton.sizeToFit()
+        hamburgerButton.frame = CGRect(x: UIScreen.main.bounds.width - 50, y: 0, width: 50, height: 20)
     }
     
     required init?(coder: NSCoder) {

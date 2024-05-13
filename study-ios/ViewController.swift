@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         movieTableView.delegate = self
         movieTableView.dataSource = self
         movieTableView.register(MovieCustomCell.nib(), forCellReuseIdentifier: MovieCustomCell.identifier)
-        movieTableView.register(HomeHeaderTableView.self, forHeaderFooterViewReuseIdentifier: "header")
+        movieTableView.register(HomeHeaderTableView.self, forHeaderFooterViewReuseIdentifier: HomeHeaderTableView.identifier)
     }
     
 }
@@ -32,9 +32,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetail")
+        // set button back
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back to movies"
+        backItem.tintColor = .systemBlue
         
-        movieDetailVC.navigationItem.title = names[indexPath.row]
-        
+        navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(movieDetailVC, animated: true)
         
         print("selected cell: \(names[indexPath.row])")
