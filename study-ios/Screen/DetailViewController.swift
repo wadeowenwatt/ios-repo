@@ -8,7 +8,10 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    var movieId: Int = 0
+    var rating: Double = 0.0
+    
     @IBOutlet var movieBanner: UIImageView!
     
     @IBOutlet var movieName: UILabel!
@@ -26,22 +29,27 @@ class DetailViewController: UIViewController {
     @IBOutlet var movieDescription: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        MovieService.sharedInstance.fetchMovieDetail(callSuccess: updateUI, movieId: movieId)
+        
         // Do any additional setup after loading the view.
         btn1.tintColor = .white
         btn2.tintColor = .white
         btn1.cornerRadius = CGFloat(20)
         btn2.cornerRadius = CGFloat(20)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func updateUI(movieDetail: MovieDetailReponse) {
+        movieBanner.load(url: URL(string: "https://image.tmdb.org/t/p/w500\(movieDetail.poster_path!)")!)
+        movieName.text = movieDetail.title
+        ratingLabel.text = "Rating: \(rating)"
+        var genres = ""
+        for item in movieDetail.genres! {
+            genres += "\(item.name!) "
+        }
+        genreLabel.text = "Genre: \(genres)"
+        releaseDate.text = "Release date: \(movieDetail.release_date!)"
+        durationLabel.text = "\(movieDetail.runtime!) minutes"
+        movieDescription.text = movieDetail.overview
     }
-    */
 
 }

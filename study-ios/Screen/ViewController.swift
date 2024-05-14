@@ -11,17 +11,27 @@ class ViewController: UIViewController {
     
     @IBOutlet var movieTableView: UITableView!
     
-    var names: [String] = ["test", "test1", "test2","test3","test4","test5","test6","test7"]
+    var movieHomeData: [MovieResult] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // API call
+        MovieService.sharedInstance.fetchMovieData(callSuccess: setDataToUI)
+        
+        
+        // UI config
         navigationController?.hidesBarsOnSwipe = true
         
         movieTableView.sectionHeaderHeight = 100
         movieTableView.delegate = self
         movieTableView.dataSource = self
-        movieTableView.register(MovieCustomCell.nib(), forCellReuseIdentifier: MovieCustomCell.identifier)
         movieTableView.register(HomeHeaderTableView.self, forHeaderFooterViewReuseIdentifier: HomeHeaderTableView.identifier)
+        movieTableView.register(MovieCustomCell.nib(), forCellReuseIdentifier: MovieCustomCell.identifier)
+    }
+    
+    func setDataToUI(listMovieResult: [MovieResult]) {
+        movieHomeData = listMovieResult
+        self.movieTableView.reloadData()
     }
     
 }
@@ -31,7 +41,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetail")
+        let movieDetailVC = storyboard.instantiateViewController(withIdentifier: "MovieDetail") as! DetailViewController
+        movieDetailVC.movieId = movieHomeData[indexPath.row].id!
+        movieDetailVC.rating = movieHomeData[indexPath.row].vote_average!
         // set button back
         let backItem = UIBarButtonItem()
         backItem.title = "Back to movies"
@@ -40,19 +52,23 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(movieDetailVC, animated: true)
         
-        print("selected cell: \(names[indexPath.row])")
+        //        print("selected cell: \(movieHomeData[indexPath.row])")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return movieHomeData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieCustomCell.identifier, for: indexPath) as! MovieCustomCell
         
-        cell.labelTitle.text = names[indexPath.row]
-        cell.timeLabel.text = "14 December 2018"
-        cell.imageBanner.load(url: URL(string: "https://i.scdn.co/image/ab67706c0000da8479dc9fdddcdfd5515607dfa0")!)
+        let movieResult = movieHomeData[indexPath.row]
+        
+        cell.labelTitle.text = movieResult.title
+        cell.timeLabel.text = movieResult.release_date
+        
+        cell.imageBanner.load(url: URL(string: "https://image.tmdb.org/t/p/w500\(movieResult.poster_path!)")!)
+        print("https://image.tmdb.org/t/p/w500\(movieResult.poster_path!)")
         cell.imageBanner.contentMode = .scaleToFill
         return cell
     }
@@ -64,7 +80,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: HomeHeaderTableView.identifier)
-        //        header?.textLabel?.text = "MOVIES"
         return header
     }
 }
